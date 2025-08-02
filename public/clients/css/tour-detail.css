@@ -1,0 +1,340 @@
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.property-info h1 {
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.rating-location {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.rating {
+    background-color: #ffc107;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.price-info {
+    display: flex;
+    line-height: 1.4;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: all 0.3s ease;
+}
+
+.current-price {
+    font-size: 30px !important;
+    font-weight: bold;
+    color: #e67e22;
+    display: block;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.original-price {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: line-through;
+    text-transform: uppercase;
+    opacity: 0.7;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
+
+.price-info:hover .current-price {
+    transform: scale(1.08);
+    text-shadow: 0 2px 6px skyblue;
+}
+
+.price-info:hover .original-price {
+    opacity: 0.4;
+}
+.image-carousel {
+    position: relative;
+    padding: 10px 0;
+    background-color: #f8f8f8;
+}
+
+.main-image-container {
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .main-image-container {
+        height: 300px;
+    }
+}
+
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px 10px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.nav-arrow:hover {
+    opacity: 1;
+}
+
+.arrow-left {
+    left: 20px;
+}
+
+.arrow-right {
+    right: 20px;
+}
+
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 10px;
+    padding: 0 20px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.thumbnails::-webkit-scrollbar {
+    display: none;
+}
+
+.thumbnail-item {
+    width: 80px;
+    height: 60px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    flex-shrink: 0;
+}
+
+.thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail-item.active {
+    border-color: #e67e22;
+}
+
+.tabs-navigation {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+    padding: 0 30px;
+}
+
+.tab-item {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #777;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-item:hover,
+.tab-item.active {
+    color: #e67e22;
+    border-bottom: 3px solid #e67e22;
+}
+
+.content-area {
+    padding: 30px;
+    min-height: 200px;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .header-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .price-info {
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .main-image-container {
+        height: 300px;
+    }
+
+    .thumbnails {
+        justify-content: flex-start;
+        padding: 0 10px;
+    }
+
+    .tab-item {
+        padding: 10px 10px;
+        font-size: 14px;
+    }
+
+    .container {
+        margin: 10px;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-section {
+        padding: 15px;
+    }
+    .property-info h1 {
+        font-size: 24px;
+    }
+    .current-price {
+        font-size: 24px;
+    }
+    .original-price {
+        font-size: 16px;
+    }
+    .nav-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+        padding: 10px 5px;
+    }
+    .arrow-left {
+        left: 10px;
+    }
+    .arrow-right {
+        right: 10px;
+    }
+    .tabs-navigation {
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+    .tab-item {
+        flex-shrink: 0;
+    }
+    .content-area {
+        padding: 20px;
+    }
+}
+
+.accordion-item {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.accordion-item.active {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.accordion-header:hover {
+    background-color: #e9ecef;
+}
+
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    background: #fff;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+}
+
+.accordion-item.active .accordion-body {
+    padding: 15px 20px;
+    max-height: 500px;
+}
+
+.accordion-header .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 15px;
+    background-image: url("/clients/img/down-arrow.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
+}
+
+/* Khi accordion mở, đổi ảnh */
+.accordion-item.active .accordion-header .icon {
+    background-image: url("/clients/img/up-arrow.svg");
+}
+
+.right {
+    width: 35%;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    justify-content: right;
+    padding: 20px;
+}
+.booking-input {
+    margin-bottom: 15px;
+    justify-content: center;
+}
+.booking-input label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.booking-input input[type="date"],
+.booking-input select {
+    width: 100%;
+    padding: 8px;
+}

@@ -1,0 +1,97 @@
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px;
+    background-color: #0a4040;
+    justify-content: space-between;
+}
+
+.footer-column {
+    flex: 1 1 250px;
+    min-width: 200px;
+}
+
+.footer-title {
+    font-size: 16px;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.footer-subtitle {
+    color: lightskyblue;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    letter-spacing: 5px;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ft {
+    color: lightcyan;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+.ft:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
+.email-form {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+    max-width: 400px;
+}
+
+.email-input {
+    padding: 12px 10px;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 14px;
+    flex: 1;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.email-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.email-button:hover {
+    background-color: #0056b3;
+}
+
+.email-wrapper {
+    max-width: 350px;
+    width: 100%;
+}
+@media (max-width: 576px) {
+    .email-form {
+        flex-direction: column;
+    }
+
+    .email-input,
+    .email-button {
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,114 @@
+.packages-grid {
+    display: grid;
+    /* Tạo một lưới responsive: tự động thêm cột khi có đủ không gian */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Thiết kế cho mỗi card --- */
+.package-card {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài bo tròn */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Phần Header của Card (ảnh) --- */
+.card-header {
+    position: relative;
+}
+
+.card-header img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Cắt ảnh để vừa vặn, không bị méo */
+    display: block;
+}
+
+.rating-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: rgba(255, 193, 7, 0.9); /* Màu vàng với độ trong suốt */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    backdrop-filter: blur(4px); /* Hiệu ứng mờ nền */
+}
+
+.rating-badge .fa-star {
+    margin-right: 4px;
+}
+
+/* --- Phần Body của Card (nội dung) --- */
+.card-body {
+    padding: 15px 20px;
+    flex-grow: 1; /* Giúp đẩy footer xuống dưới cùng */
+}
+
+.card-body p {
+    margin: 0 0 10px 0;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa icon và chữ */
+}
+
+.package-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+/* --- Phần Footer của Card (giá và nút) --- */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 20px 20px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+.price-info .old-price {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    text-decoration: line-through;
+    display: block;
+}
+
+.price-info .current-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.book-button {
+    background-color: seashell;
+    color: lightseagreen;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.book-button:hover {
+    background-color: darkorange; /* Màu đậm hơn khi hover */
+}
