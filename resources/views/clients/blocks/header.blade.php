@@ -68,10 +68,22 @@
         </div>
         <nav class="menu">
             <ul class="main-menu">
-                <a href="{{ route('home') }}">Trang chủ</a>
-                <a href="{{ route('about') }}">Về Flazer</a>
-                <a href="{{ route('tours') }}">Tours</a>
-                <a href="{{ route('services') }}">Dịch vụ</a>
+                <li class="nav-item {{ request()->is('trang-chu') ? 'active' : '' }}">
+                    <a href="{{ route('home') }} ">Trang chủ</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('about') }}">Về Flazer</a>
+                </li>
+
+                <li class="nav-item ">
+                    <a href="{{ route('tours') }}">Tours</a>
+                </li>
+
+
+                <li class="nav-item ">
+                    <a href="{{ route('services') }}">Dịch vụ</a>
+                </li>
 
                 <li class="has-dropdown">
                     <a href="#">Pages <span class="dropdown-icon">&#9660;</span></a>
@@ -102,7 +114,7 @@
                             <span class="dropdown-icon">&#9660;</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Thông tin cá nhân</a></li>
+                            <li><a href="{{ route('profile') }}">Thông tin cá nhân</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -117,11 +129,7 @@
                     </li>
                 @endauth
 
-
-
             </ul>
-
-
 
         </nav>
     </header>

@@ -13,9 +13,13 @@ use App\Http\Controllers\clients\LoginController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\clients\RegisterController;
 use App\Http\Controllers\clients\SearchController;
+use App\Http\Controllers\clients\FilterController;
 use App\Http\Controllers\clients\TourDetailController;
 use App\Http\Controllers\clients\TourController;
 use App\Http\Controllers\Auth\FacebookController;
+use App\Http\Controllers\clients\ProfileController;
+
+
 
 
 Route::middleware(['web'])->group(function () {
@@ -36,18 +40,19 @@ Route::middleware(['web'])->group(function () {
     Route::get('/tour-detail/{id}',  [TourDetailController::class, 'index'])->name("tour-detail");
 
     Route::get('/search',  [SearchController::class, 'search'])->name("search");
+
+    Route::get('/filter',  [FilterController::class, 'filter'])->name("filter");
 });
+
 
 //Auth
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name("login");
 Route::post('/login', [LoginController::class, 'login']);
 
 
-Route::middleware('web')->group(function () {
-    Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login-google');
-    Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
-});
 
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name("login-google");
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 
 
@@ -60,17 +65,40 @@ Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name("
 Route::post('/register', [RegisterController::class, 'register']);
 
 
+
 Route::post('/check-username', [RegisterController::class, 'checkUsername'])->name('check.username');
 Route::post('/check-email', [RegisterController::class, 'checkEmail'])->name('check.email');
 Route::post('/check-phone', [RegisterController::class, 'checkPhone'])->name('check.phone');
+Route::get('activation-account/{token}', [LoginController::class, 'activateAccount'])->name('activation.account');
+
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile_user', [ProfileController::class, 'profile'])->name('profile');
+});
 
 
 Route::post('/logout', [RegisterController::class, 'logout'])->name("logout");
 
 Route::get('/session-test', function () {
     session(['key' => 'value']);
-    return session('key'); // Nếu hoạt động, sẽ trả về "value"
+    return session('key');
 });
+
+
+Route::get('/test-curl', function () {
+    $ch = curl_init("https://google.com");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        return 'Lỗi cURL: ' . curl_error($ch);
+    } else {
+        return 'Thành công!';
+    }
+});
+
+
 
 Route::get('/delete-data', function () {
     return view('delete_data');

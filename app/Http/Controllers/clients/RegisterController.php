@@ -8,6 +8,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+
 
 class RegisterController extends Controller
 {
@@ -29,18 +32,20 @@ class RegisterController extends Controller
             'address' => 'nullable',
         ]);
 
-
+        $activation_token = Str::random(60);
         User::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'phone' => $request->phone,
             'address' => $request->address,
-
+            'activation_token' => $activation_token
 
         ]);
 
-        return redirect()->route('login')->with('success', 'Đăng ký thành công!')
+        $this->sendActivationMail($request->email, $activation_token);
+
+        return redirect()->route('login')->with('success', 'Đăng ký thành công! Kiểm tra email để kích hoạt tài khoản..')
             ->with('registered_username', $request->username);
     }
 
@@ -63,6 +68,16 @@ class RegisterController extends Controller
         return response()->json(['exists' => $exists]);
     }
 
+
+    public function sendActivationMail($email, $token)
+    {
+        $activation_link = route('activation.account', ['token' => $token]);
+
+        Mail::send('clients.mail.email_activation', ['link' => $activation_link], function ($message) use ($email) {
+            $message->to($email);
+            $message->subject('Kích hoạt email của bạn');
+        });
+    }
 
 
     public function logout()

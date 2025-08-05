@@ -4,8 +4,12 @@
 
     <div class="login-box">
         @if (session('success'))
-            <div class="alert alert-success" style="color: red; font-size: 14px">
+            <div class="alert alert-success">
                 {{ session('success') }}
+            </div>
+        @elseif (session('error'))
+            <div class="alert alert-error">
+                {{ session('error') }}
             </div>
         @endif
 

@@ -5,6 +5,7 @@ namespace App\Models\clients;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Models\clients\User;
 
 class Login extends Model
 {
@@ -12,9 +13,9 @@ class Login extends Model
 
    protected $table = 'users';
 
-   public function register($data): bool
+   public function register(array $data)
    {
-      return DB::table($this->table)->insert($data);
+      return User::create($data);
    }
 
    public function checkUserExist($username, $email)
@@ -29,10 +30,14 @@ class Login extends Model
    }
 
 
-   public function checkUserExistGoogle($google_id)
+   public function getUserByToken($token)
    {
+      return DB::table($this->table)->where('activation_token', $token)->first();
+   }
 
-      $checkg = DB::table($this->table)->where('google_id', $google_id)->first();
-      return $checkg;
+
+   public function activateUser($token)
+   {
+      return DB::table($this->table)->where('activation_token', $token)->update(['activation_token' => null, 'active' => 'y']);
    }
 }

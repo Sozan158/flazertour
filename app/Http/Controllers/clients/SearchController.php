@@ -7,21 +7,22 @@ use Carbon\Carbon;
 use App\Models\clients\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class SearchController extends Controller
 {
-    
+
     public function search(Request $request)
     {
         $title = 'Tìm Tour';
         $query = Tour::query();
 
 
-        if ($request->filled('destination')){
+        if ($request->filled('destination')) {
             $query->where('destination', 'like', '%' . $request->destination . '%');
         }
 
         if ($request->filled('check_in')) {
-             $query->where('start_date', '>=', Carbon::createFromFormat('d/m/Y', $request->input('check_in'))->format('Y-m-d'));
+            $query->where('start_date', '>=', Carbon::createFromFormat('d/m/Y', $request->input('check_in'))->format('Y-m-d'));
         }
 
         if ($request->filled('region')) {
@@ -56,20 +57,20 @@ class SearchController extends Controller
                 $query->orderBy('created_date', 'desc');
                 break;
             default:
-                $query->orderBy('IDTour', 'desc'); 
-    }
+                $query->orderBy('IDTour', 'desc');
+        }
 
         $tours = $query->get();
 
         $count = $tours->count();
 
         foreach ($tours as $tour) {
-        $tour->images = DB::table('tours_image')
-        ->where('IDTour', $tour->IDTour)
-        ->value('img_url') ;
+            $tour->images = DB::table('tours_image')
+                ->where('IDTour', $tour->IDTour)
+                ->value('img_url');
         }
 
 
-        return view('clients.searchtour', compact('title','tours','count'));
+        return view('clients.searchtour', compact('title', 'tours', 'count'));
     }
 }

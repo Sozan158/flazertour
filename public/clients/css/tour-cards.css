@@ -72,32 +72,6 @@
     background-color: #077ba1;
 }
 
-.main-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.main-menu > li {
-    position: relative;
-    padding: 0 15px;
-}
-
-.main-menu a {
-    text-decoration: none;
-    color: #ffffff;
-    padding: 10px 0;
-    display: block;
-    white-space: nowrap;
-}
-
-.main-menu .has-dropdown > a {
-    color: #ffffff;
-}
-
 .dropdown-icon {
     font-size: 0.7em;
     vertical-align: middle;

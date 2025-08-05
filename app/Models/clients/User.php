@@ -29,6 +29,7 @@ class User extends Authenticatable
         'status',
         'role',
         'active',
+        'activation_token',
     ];
 
     protected $hidden = [

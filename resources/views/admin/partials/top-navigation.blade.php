@@ -29,10 +29,34 @@
 
         <li>
             <a href="#">
+                <span class="icon"><ion-icon name="pricetags-outline"></ion-icon></span>
+
+                <span class="text">Quản lý vouncher</span>
+        </li>
+
+
+        <li>
+            <a href="#">
                 <span class="icon"><ion-icon name="cart-outline"></ion-icon></span>
 
                 <span class="text">Quản lý đơn đặt</span>
         </li>
+
+
+        <li>
+            <a href="#">
+                <span class="icon"><ion-icon name="reader-outline"></ion-icon></span>
+
+                <span class="text">Quản lý bài viết</span>
+        </li>
+
+        <li>
+            <a href="#">
+                <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+
+                <span class="text">Liên hệ</span>
+        </li>
+
 
         <li>
             <a href="#">

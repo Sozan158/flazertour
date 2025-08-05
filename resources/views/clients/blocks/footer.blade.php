@@ -104,7 +104,7 @@
 <script src="{{ asset('clients/js/tour.js') }}"></script>
 <script src="{{ asset('clients/js/tour-detail.js') }}"></script>
 <script src="{{ asset('clients/js/custom.js') }}"></script>
-
+<script src="{{ asset('clients/js/navi.js') }}"></script>
 
 
 

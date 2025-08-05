@@ -16,4 +16,12 @@
         <a href="#"><i class="fab fa-youtube"></i></a>
         <a href="#"><i class="fab fa-tiktok"></i></a>
     </div>
+
 </div>
+<nav class="breadcrumb">
+    <a href="{{ url('/') }}" class="breadcrumb-item">
+        <i class="fas fa-home"></i> Trang chủ
+    </a>
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-current"></span>
+</nav>

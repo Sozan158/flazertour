@@ -93,12 +93,12 @@ $(document).ready(function () {
     });
 
     // Ẩn alert sau 3 giây
-    const alertSuccess = document.querySelector(".alert-success");
-    if (alertSuccess) {
+    const alertAppear = document.querySelector(".alert");
+    if (alertAppear) {
         setTimeout(() => {
-            alertSuccess.style.transition = "opacity 0.5s ease";
-            alertSuccess.style.opacity = "0";
-            setTimeout(() => alertSuccess.remove(), 500);
+            alertAppear.style.transition = "opacity 0.5s ease";
+            alertAppear.style.opacity = "0";
+            setTimeout(() => alertAppear.remove(), 500);
         }, 3000);
     }
 });

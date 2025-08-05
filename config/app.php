@@ -127,6 +127,7 @@ return [
     'aliases' => [
         // các alias mặc định...
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Mail' => Illuminate\Support\Facades\Mail::class,
     ],
 
 ];
