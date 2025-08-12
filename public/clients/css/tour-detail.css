@@ -338,3 +338,343 @@
     width: 100%;
     padding: 8px;
 }
+
+.booking-widget {
+    flex: 1;
+    background-color: #f8f9fa;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 20px;
+    border: 2px solid cyan;
+}
+
+.quantity-control {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid #eee;
+    border-radius: 50px;
+    padding: 5px 10px;
+    background: white;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: #222;
+}
+
+.qty-btn:hover {
+    color: #00bcd4;
+}
+
+.quantity-control input {
+    width: 100px;
+    text-align: center;
+    border: none;
+    background: none;
+    font-size: 16px;
+    color: #222;
+}
+
+.quantity-control input:focus {
+    outline: none;
+}
+
+.inclusions {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 30px;
+}
+.inclusions h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.inclusions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.8;
+}
+.inclusions ul li::before {
+    content: "<";
+    color: cyan;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+.included h3 i {
+    color: #28a745;
+}
+.excluded h3 i {
+    color: #dc3545;
+}
+/* --- Bố cục chính --- */
+.checkout-container {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+    gap: 30px;
+    align-items: flex-start;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.checkout-main {
+    flex: 2;
+    background-color: var(--background-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.order-summary {
+    flex: 1;
+    background-color: var(--background-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 20px;
+}
+
+/* --- Tiêu đề & Section --- */
+.checkout-header h1 {
+    font-size: 24px;
+    margin-top: 0;
+    color: var(--text-color);
+}
+
+.info-section {
+    margin-bottom: 30px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.info-section h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* --- Form --- */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: "Be Vietnam Pro", sans-serif;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.passenger-info {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.passenger-info strong {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* --- Phương thức thanh toán --- */
+.payment-options .payment-option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.payment-options .payment-option:has(input:checked) {
+    border-color: var(--primary-color);
+    background-color: #f0f8ff;
+}
+
+.payment-options input[type="radio"] {
+    margin-right: 15px;
+    transform: scale(1.2);
+}
+
+/* --- Tóm tắt đơn hàng (Cột phải) --- */
+.order-summary h3 {
+    font-size: 20px;
+    margin-top: 0;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.order-summary img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.tour-details h4 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.tour-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.price-details {
+    margin: 20px 0;
+}
+
+.price-details .price-item,
+.price-details .price-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.price-details .price-total {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 15px 0;
+}
+
+.terms {
+    font-size: 13px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.terms input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.terms a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.btn-checkout {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    background-color: var(--success-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-checkout:hover {
+    background-color: #218838;
+}
+
+.secure-badge {
+    text-align: center;
+    margin-top: 20px;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* --- Responsive cho điện thoại --- */
+@media (max-width: 992px) {
+    .checkout-container {
+        flex-direction: column;
+    }
+
+    .order-summary {
+        position: static; /* Bỏ sticky trên di động */
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr; /* 1 cột trên màn hình nhỏ */
+    }
+
+    body {
+        padding: 10px;
+    }
+
+    .checkout-main,
+    .order-summary {
+        padding: 20px;
+    }
+}
+.bkheader {
+    background: linear-gradient(to bottom, #1d3557, #457b9d);
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    animation: fadeDown 0.8s ease forwards;
+}
+
+/* Hiệu ứng */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

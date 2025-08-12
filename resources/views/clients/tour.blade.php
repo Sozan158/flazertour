@@ -27,11 +27,6 @@
         <h6 class="text-primary text-uppercase text-center" style="letter-spacing: 5px;">Danh sách</h6>
         <h1 class="text-center">Tour du lịch Miền Bắc</h1>
     </div>
-    {{-- <div class="d-flex justify-content-center">
-        {{ $tours->links('pagination::bootstrap-5') }}
-    </div> --}}
-
-
 
 </div>
 

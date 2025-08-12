@@ -41,7 +41,7 @@
         <div class="tab-item active" data-tab="features">Đặc điểm</div>
         <div class="tab-item" data-tab="ticket-prices">Giá vé Tour</div>
         <div class="tab-item" data-tab="introduction">Giới thiệu</div>
-        <div class="tab-item" data-tab="regulations">Quy định</div>
+        <div class="tab-item" data-tab="regulations">Lưu ý</div>
         <div class="tab-item" data-tab="reviews">Đánh giá </div>
     </div>
 
@@ -71,116 +71,136 @@
 
 
 
-    <div class="right">
-        <h3>Đặt Tour</h3>
 
-        <div class="booking-input">
-            <label>Từ ngày</label>
-            <input type="date">
-        </div>
+    <form action="{{ route('booking', ['id' => $tourDetail->IDTour]) }}" method="POST" id="bookingForm">
+        @csrf
+        <aside class="booking-widget">
+            <h3>Đặt Tour</h3>
+            <hr class='mb-25' style="border: solid 1px cyan; margin-bottom: 40px; ">
 
-        <div class="booking-input">
-            <label>Đến ngày</label>
-            <input type="date">
-        </div>
+            <div class="booking-input">
+                <label>Từ ngày</label>
+                <input type="date" name="start_date">
+            </div>
 
-        <div class="booking-input">
-            <label>Thời gian: {{ $tourDetail->duration }}</label>
+            <div class="booking-input">
+                <label>Đến ngày</label>
+                <input type="date" name="end_date">
+            </div>
 
-        </div>
+            <div class="booking-input">
+                <label>Thời gian: {{ $tourDetail->duration }}</label>
 
-        {{-- <hr class='mb-25'> --}}
-        <div class="booking-input">
-            <label>Giá vé:</label>
-            <p>Trẻ em <select>
-                    <option>01</option>
-                    <option>02</option>
-                    <option>03</option>
-                    <option>04</option>
-                    <option>05</option>
-                </select></p>
-            <p>Người lớn <select>
-                    <option>01</option>
-                    <option>02</option>
-                    <option>03</option>
-                    <option>04</option>
-                    <option>05</option>
-                </select></p>
-        </div>
-        <hr class='mb-25'>
+            </div>
 
-        <div class="booking-input">
-            <label>Phụ thu:</label>
-            <label><input type="radio" name="extra"> Theo đơn đặt — $50</label><br>
-            <label><input type="radio" name="extra"> Theo cá nhân — $24</label>
-        </div>
+            <hr class='mb-25'>
+            <div class="booking-input">
+                <label>Giá vé:</label>
+                <p>Trẻ em
+                <div class="quantity-control">
+                    <button type="button" class="btn-acc" data-target="childQty">-</button>
+                    <input type="number" id="childQty" name="child_qty" data-price="{{ $tourDetail->priceC }}"
+                        value="0" min="0" readonly>
+                    <button type="button" class="btn-acc" data-target="childQty">+</button>
+                </div>
+                <strong> X {{ number_format($tourDetail->priceC, 0, ',', '.') }}</strong>
+                </p>
+                <p>Người lớn
+                <div class="quantity-control">
+                    <button type="button" class="btn-acc" data-target="adultQty">-</button>
+                    <input type="number" id="adultQty" name="adult_qty" data-price="{{ $tourDetail->priceA }}"
+                        value="1" min="0" readonly>
+                    <button type="button" class="btn-acc" data-target="adultQty">+</button>
+                </div>
+                <strong> X {{ number_format($tourDetail->priceA, 0, ',', '.') }}</strong>
+                </p>
 
-        <div class="total">Tổng giá Tour:</div>
-        <span class="current-price">{{ number_format($tourDetail->priceC, 0, ',', '.') }} VND</span>
-        <button class="btn-book">Book Now</button>
-    </div>
+                <hr class='mb-25'>
+
+                {{-- <div class="booking-input">
+                <label>Phụ thu:</label>
+                <label><input type="radio" name="extra"> Theo đơn đặt — $50</label><br>
+                <label><input type="radio" name="extra"> Theo cá nhân — $24</label>
+            </div> --}}
+
+                <div class="total">Tổng giá Tour:</div>
+                <span class="current-price"></span>
+                <input type="hidden" name="total_price" id="total_price" value="0">
+
+            </div>
+            <button type = "submit" class="btn-book">Đặt
+                ngay
+
+            </button>
+        </aside>
+    </form>
 </div>
-<div class="form-row tm-search-form-row">
-    <div class="form-group tm-form-element tm-form-element-2">
-        <select name="adult" class="form-control tm-select" id="adult">
-            <option value="">Người lớn</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        <i class="fa fa-2x fa-user tm-form-element-icon"></i>
-    </div>
-    <div class="form-group tm-form-element tm-form-element-2">
-        <select name="children" class="form-control tm-select" id="children">
-            <option value="">Trẻ em</option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        <i class="fa fa-user tm-form-element-icon tm-form-element-icon-small"></i>
-    </div>
-    <div class="form-group tm-form-element tm-form-element-2">
-        <select name="room" class="form-control tm-select" id="room">
-            <option value="">Phòng</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        <i class="fa fa-2x fa-bed tm-form-element-icon"></i>
-    </div>
-    <div class="form-group tm-form-element tm-form-element-2">
-        <button type="submit" class="btn btn-primary tm-btn-search">Check Availability</button>
-    </div>
-</div>
-
-
 
 <script>
     const tourDescription = `{!! $tourDetail->description !!}`;
+    const tourIntroduction = `{!! $tourDetail->introduction !!}`;
     const tourPriceA = "{{ $tourDetail->priceA }}";
     const tourPriceC = "{{ $tourDetail->priceC }}";
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const qtyButtons = document.querySelectorAll('.btn-acc');
+        const totalPriceEl = document.querySelector('.booking-widget .current-price');
+
+        // Hàm format tiền tệ VND
+        function formatCurrency(amount) {
+            return amount.toLocaleString('vi-VN') + ' VND';
+        }
+
+        // Hàm tính tổng
+        function updateTotal() {
+            const childQty = parseInt(document.getElementById('childQty').value);
+            const adultQty = parseInt(document.getElementById('adultQty').value);
+            const childPrice = parseInt(document.getElementById('childQty').dataset.price);
+            const adultPrice = parseInt(document.getElementById('adultQty').dataset.price);
+
+            const total = (childQty * childPrice) + (adultQty * adultPrice);
+            totalPriceEl.textContent = formatCurrency(total);
+
+            document.getElementById('total_price').value = total;
+        }
+
+        // Xử lý click nút cộng/trừ
+        qtyButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const targetId = this.dataset.target;
+                const input = document.getElementById(targetId);
+                let value = parseInt(input.value);
+
+                if (this.textContent === '+') {
+                    value++;
+                } else if (this.textContent === '-' && value > 0) {
+                    value--;
+                }
+
+                input.value = value;
+                updateTotal();
+            });
+        });
+
+        updateTotal();
+
+
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            const totalPrice = parseInt(document.getElementById('total_price').value);
+
+            if (!totalPrice || totalPrice === 0) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+
+
+
 
 @include('clients.blocks.footer')

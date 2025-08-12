@@ -1,23 +1,18 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models\clients;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
 
 
 class Booking extends Model
 {
-    // protected $table ='tours_booking';
-    // protected $fillable =['user_id','tour_id','booking_date','status'];
+    protected $table = 'tours_booking';
 
-    // public function user(): BelongsTo 
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
-    //  public function tour(): BelongsTo 
-    // {
-    //     return $this->belongsTo(Tour::class);
-    
 
+    public function createBooking($data)
+    {
+        return DB::table($this->table)->insertGetId($data);
+    }
 }

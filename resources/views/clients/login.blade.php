@@ -1,5 +1,5 @@
 @include('clients.blocks.header')
-
+@include('components.toast')
 <div class="bgr1">
 
     <div class="login-box">
@@ -56,11 +56,6 @@
 
 
 </div>
-
-{{-- @if (Auth::check())
-    Xin chào, {{ Auth::user()->name }}
-@endif --}}
-
 
 
 @include('clients.blocks.footer')

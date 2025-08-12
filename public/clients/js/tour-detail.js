@@ -63,16 +63,34 @@ document.addEventListener("DOMContentLoaded", () => {
         `,
             introduction: `
             <h3>Giới thiệu</h3>
+            <h6>${tourIntroduction}</h6>
             <p></p>
         `,
             regulations: `
-            <h3>Quy định</h3>
+            <h3>Lưu ý</h3>
+            <section class="tour-section inclusions">
+            <div class="included">
+           
+            <h3><i class="fas fa-check-circle"></i> Giá tour bao gồm</h3>
             <ul>
-                <li>Check-in: 14:00 | Check-out: 12:00</li>
-                <li>Không hút thuốc trong phòng</li>
-                <li>Không mang thú cưng</li>
-                <li>Hủy tour trước 3 ngày sẽ được hoàn 80%</li>
+                <li>Xe đưa đón Limousine khứ hồi Hà Nội - Hạ Long.</li>
+                <li>Du thuyền 5 sao, phòng nghỉ tiện nghi.</li>
+                <li>Các bữa ăn theo chương trình (2 bữa trưa, 1 bữa tối, 1 bữa sáng).</li>
+                <li>Vé tham quan các điểm trong lịch trình.</li>
+                <li>Thuyền kayak, thuyền nan.</li>
+                <li>Hướng dẫn viên nhiệt tình, kinh nghiệm.</li>
             </ul>
+            </div>
+            <div class="excluded">
+            <h3><i class="fas fa-times-circle"></i> Giá tour không bao gồm</h3>
+            <ul>
+                <li>Đồ uống trong các bữa ăn.</li>
+                <li>Chi phí cá nhân, giặt là, điện thoại.</li>
+                <li>Tiền tip cho hướng dẫn viên và lái xe.</li>
+                <li>Thuế VAT.</li>
+            </ul>
+            </div>
+            </section>
         `,
             reviews: `
             <h3>Đánh giá</h3>
@@ -133,3 +151,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+document.querySelectorAll(".qty-btn").forEach((btn) => {
+    btn.addEventListener("click", function () {
+        const targetId = this.getAttribute("data-target");
+        const input = document.getElementById(targetId);
+        let value = parseInt(input.value);
+
+        if (this.textContent === "+") {
+            value++;
+        } else if (this.textContent === "-" && value > 0) {
+            value--;
+        }
+
+        input.value = value;
+    });
+});
+
+//Booking Form

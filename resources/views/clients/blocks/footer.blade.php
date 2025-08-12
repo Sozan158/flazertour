@@ -48,7 +48,7 @@
         <p class="ft"><span>📞</span> +093 204 63114</p>
         <p class="ft"><span>✉️</span> flazerinfo@gmail.com</p>
 
-        <h6 class="footer-subtitle">Gửi mail</h6>
+        <h6 class="footer-subtitle">Nhận khuyến mãi ngay</h6>
         <div class="email-wrapper">
             <div class="email-form">
                 <input type="text" class="email-input" placeholder="Email của bạn">
@@ -99,13 +99,22 @@
 
 <!-- Template Javascript -->
 {{-- <script src="{{ asset('clients/js/main.js') }}"></script> --}}
-<script src="{{ asset('clients/js/slider.js') }}"></script>
+
 <script src="{{ asset('clients/js/pagination.js') }}"></script>
 <script src="{{ asset('clients/js/tour.js') }}"></script>
 <script src="{{ asset('clients/js/tour-detail.js') }}"></script>
-<script src="{{ asset('clients/js/custom.js') }}"></script>
+<script src="{{ asset('clients/js/auth.js') }}"></script>
 <script src="{{ asset('clients/js/navi.js') }}"></script>
 
+@if (session('toast'))
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Toast session data:", @json(session('toast')));
+            let toastData = @json(session('toast'));
+            showToast(toastData.type, toastData.message);
+        })
+    </script>
+@endif
 
 
 </body>

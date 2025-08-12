@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8">
     <title>FLAZER TOUR </title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="tour du lịch, đặt tour, flazer tour, du lịch Việt Nam" name="keywords">
     <meta content="Flazer Tour - Đặt tour giá rẻ, khám phá vô tận" name="description">
@@ -33,6 +34,7 @@
     <link href="{{ asset('clients/css/testimonial.css') }}" rel="stylesheet">
     <link href="{{ asset('clients/css/ft.css') }}" rel="stylesheet">
     <link href="{{ asset('clients/css/reg.css') }}" rel="stylesheet">
+
 
 
     <!-- Bootstrap CSS -->
@@ -109,11 +111,15 @@
                 @auth
                     <li class="has-dropdown">
                         <a href="#" class="account-link">
-                            <i class="fas fa-user-check"></i>
+                            {{-- <i class="fas fa-user-check"></i>  --}}
+                            <img src="{{ asset('clients/img/profile/' . auth()->user()->avatar) }}"
+                                style="cursor:pointer; width: 40px;">
+
                             <span>{{ auth()->user()->username }}</span>
                             <span class="dropdown-icon">&#9660;</span>
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a>{{ auth()->user()->role }}</a></li>
                             <li><a href="{{ route('profile') }}">Thông tin cá nhân</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"

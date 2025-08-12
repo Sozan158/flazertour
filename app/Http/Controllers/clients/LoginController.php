@@ -48,10 +48,17 @@ class LoginController extends Controller
                 return redirect()->route('login')->with('error', 'Tài khoản chưa được kích hoạt. Vui lòng kiểm tra email!!!');
             }
 
-            return redirect()->route('home');
+            return redirect()->route('home')->with('toast', [
+                'type' => 'success',
+                'message' => 'Đăng nhập thành công!!'
+
+            ]);
         }
 
-        return redirect()->route('login')->with('error', 'Tên đăng nhập hoặc mật khẩu không đúng.');
+        return redirect()->route('login')->with('toast', [
+            'type' => 'error',
+            'message' => 'Tên đăng nhập hoặc mật khẩu không đúng.'
+        ]);
     }
 
 

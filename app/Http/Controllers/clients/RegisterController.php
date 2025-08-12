@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Mail;
+
 
 
 class RegisterController extends Controller
@@ -69,20 +69,16 @@ class RegisterController extends Controller
     }
 
 
-    public function sendActivationMail($email, $token)
-    {
-        $activation_link = route('activation.account', ['token' => $token]);
 
-        Mail::send('clients.mail.email_activation', ['link' => $activation_link], function ($message) use ($email) {
-            $message->to($email);
-            $message->subject('Kích hoạt email của bạn');
-        });
-    }
 
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('login')->with('toast', [
+            'type' => 'success',
+            'message' => 'Bạn đã đăng xuất!'
+
+        ]);
     }
 }

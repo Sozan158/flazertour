@@ -17,6 +17,8 @@ use App\Http\Controllers\clients\FilterController;
 use App\Http\Controllers\clients\TourDetailController;
 use App\Http\Controllers\clients\TourController;
 use App\Http\Controllers\Auth\FacebookController;
+use App\Http\Controllers\clients\BookingController;
+use App\Http\Controllers\clients\CheckoutController;
 use App\Http\Controllers\clients\ProfileController;
 
 
@@ -75,6 +77,16 @@ Route::get('activation-account/{token}', [LoginController::class, 'activateAccou
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile_user', [ProfileController::class, 'profile'])->name('profile');
+    Route::post('/profile_user/update', [ProfileController::class, 'update'])->name('user-profile');
+    Route::post('/profile_user/changePassword', [ProfileController::class, 'changePassword'])->name('user-password');
+    Route::post('/profile_user/updateAvatar', [ProfileController::class, 'updateAvatar'])->name('user-avatar');
+
+    Route::get('/booking/{id}', [BookingController::class, 'bookingForm'])->name('booking');
+    Route::post('/booking/{id}', [BookingController::class, 'booking'])->name('booking.store');
+
+    Route::post('/booking/confirm/{id}', [BookingController::class, 'confirmBooking'])->name('booking.confirm');
+
+    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 });
 
 

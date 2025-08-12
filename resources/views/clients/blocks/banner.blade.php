@@ -1,6 +1,6 @@
 <!-- Banner -->
 <div class="banner">
-    <img id="banner-imag" src="{{ asset('clients/img/hlb1.jpg') }}" alt="Vịnh Hạ Long">
+    <img id="banner-img" src="{{ asset('clients/img/hlb1.jpg') }}" alt="Vịnh Hạ Long">
     <div class="welcome-box">
         <img src="{{ asset('clients/img/flazerlogo1.png') }}" alt="Flazer Tour">
         <h2 style="color:skyblue"">Chào mừng đến FLAZER FAMILY!!</h2>
@@ -25,3 +25,23 @@
     <span class="breadcrumb-separator">/</span>
     <span class="breadcrumb-current"></span>
 </nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const bannerImg = document.getElementById("banner-img");
+
+        const bannerImages = [
+            "{{ asset('clients/img/europe.jpg') }}",
+            "{{ asset('clients/img/danang.jpg') }}",
+            "{{ asset('clients/img/singapore.jpg') }}",
+            "{{ asset('clients/img/codohue.jpg') }}"
+        ];
+
+        let currentIndex = 0;
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % bannerImages.length;
+            bannerImg.src = bannerImages[currentIndex];
+        }, 5000);
+    });
+</script>
